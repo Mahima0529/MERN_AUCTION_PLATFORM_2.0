@@ -4,6 +4,7 @@ import{catchAsyncErrors} from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
 import { v2 as cloudinary} from "cloudinary";
 import mongoose from "mongoose";
+import { Bid } from "../models/bidSchema.js";
 export const addNewAuctionItem = catchAsyncErrors(async(req,res,next)=>{
     if(!req.files|| Object.keys(req.files).length===0){
     return next(new ErrorHandler("Auction item Image Required",400))
@@ -238,6 +239,9 @@ auctionItem= await Auction.findByIdAndUpdate(id, data,{
     runValidators:true,
     useFindAndModify:false,
 });
+
+await Bid.deleteMany({auctionItem:auctionItem._id});
+
 const createdBy = await User.findByIdAndUpdate(req.user._id,{unpiadComission:0},
     {
         new:true,
