@@ -215,10 +215,23 @@ if(data.startTime< Date.now()){
 if(data.startTime>=data.endTime){
     return next (new ErrorHandler("Auction starting time must be lesser than ending time",400));
 }
+if(auctionItem.highestBidder){
+    const highestBidder = await User.findById(auctionItem.highestBidder);
+    highestBidder.moneySpent -=auctionItem.currentBid;
+    highestBidder.auctionItem -= -1;
+    highestBidder.save();
+}
+
+
+
+
+
+
 data.bids=[];
 data.commissionCalculated= false;
+data.currentBid=0;
 
- 
+ data.highestBidder="";
 
 auctionItem= await Auction.findByIdAndUpdate(id, data,{
     new:true,
