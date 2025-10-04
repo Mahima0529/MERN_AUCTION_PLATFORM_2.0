@@ -1,6 +1,6 @@
 import express from "express";
 import { isAuthenticated, isAuthorized } from "../middlewares/auth.js";
-import { deleteAuctionItem, deletePaymentProof,fetchAllUsers,getAllPaymentProofs,getPaymentProofDetail,updateProofStatus } from "../controllers/superAdminController.js";
+import { deleteAuctionItem, deletePaymentProof,fetchAllUsers,getAllPaymentProofs,getPaymentProofDetail,monthlyRevenue,updateProofStatus } from "../controllers/superAdminController.js";
 
 const router = express.Router();
 
@@ -15,4 +15,7 @@ const router = express.Router();
  router.delete("/paymentproof/delete/:id", isAuthenticated,isAuthorized("Super Admin"),deletePaymentProof);
 
   router.get("/users/getall", isAuthenticated,isAuthorized("Super Admin"), fetchAllUsers);
+
+   router.get("/monthlyincome", isAuthenticated,isAuthorized("Super Admin"), monthlyRevenue);
+
 export default router;
