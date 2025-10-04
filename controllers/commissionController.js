@@ -1,20 +1,31 @@
+import mongoose from "mongoose";
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
+import { Auction } from "../models/auctionSchema.js";
 import { PaymentProof } from "../models/commissionProofSchema.js";
 import { User } from "../models/userSchema.js";
 import {v2 as cloudinary} from "cloudinary";
 
+export const calculateCommission = async(auctionId)=>{
+    const auction = await Auction.findById(auctionId);
+    if(!mongoose.Types.ObjectId.isValid(auctionId)){
+        return next (new ErrorHandler("Invalid Auction Id format",400));
+
+    }
+    const commissionRate= 0.05;
+    const commission= auction.currentBid*commissionRate;
+    return commission;
+};
+
+
+
 export const proofOfCommission = catchAsyncErrors(async(req , res , next)=>{
-//     console.log("BODY:", req.body);
-// console.log("FILES:", req.files);
-//////////
+
     if(!req.files|| Object.keys(req.files).length===0){
         return next (new ErrorHandler("Payment Proof Screenshot Required", 400));
     }
     const {proof}= req.files;
     const { amount, comment }= req.body;
-//    const amount = req.body?.amount;
-//     const comment = req.body?.comment; ///////my changes
     const user= await User.findById(req.user._id);
 
 if(!amount || !comment){ 
