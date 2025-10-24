@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
-import { commission } from "../models/commissionSchema.js";
+import { Commission } from "../models/commissionSchema.js";
 import { User } from "../models/userSchema.js";
 import { Auction } from "../models/auctionSchema.js";
 import { PaymentProof } from "../models/commissionProofSchema.js";
@@ -134,7 +134,7 @@ res.status(200).json({
 }); 
 
 export const monthlyRevenue = catchAsyncErrors(async(req , res , next )=>{
-    const payments= await commission.aggregate([
+    const payments= await Commission.aggregate([
         {
             $group:{
                 _id:{

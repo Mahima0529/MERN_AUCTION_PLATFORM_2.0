@@ -61,7 +61,7 @@ if(!cloudinaryResponse|| cloudinaryResponse.error){
         cloudinaryResponse.error || "Unknown cloudinary error"
     );
     return next(
-        new ErrorHandler("Failed to upload payment prroof", 500)
+        new ErrorHandler("Failed to upload payment proof", 500)
     );
 }
 const commissionProof = await PaymentProof.create({

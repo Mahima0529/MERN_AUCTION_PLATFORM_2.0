@@ -72,7 +72,7 @@ if(!cloudinaryResponse|| cloudinaryResponse.error){
         cloudinaryResponse.error || "Unknown cloudinary error"
     );
     return next(
-        new(ErrorHandler("Failed to upload profile image to cloudinary ", 500))
+        new ErrorHandler("Failed to upload profile image to cloudinary ", 500)
     );
 }
 const user = await User.create({
@@ -102,7 +102,7 @@ googlepay_upi_id,
     },
  });
 
- generateToken(user,"User regietered successfully", 201,res)
+ generateToken(user,"User registered successfully", 201,res)
  
 });
 
@@ -144,7 +144,7 @@ export const logout= catchAsyncErrors(async(req,res,next)=>{
         httpOnly: true,
     }).json({
         success:true,
-        message: "Logout Successfully,",
+        message: "Logout Successfully",
     });
      
 });

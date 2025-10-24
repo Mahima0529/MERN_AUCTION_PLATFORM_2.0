@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     },
     paymentMethods:{
         bankTransfer:{
-            bankAccountNumber:Number,
+            bankAccountNumber:String,
             bankAccountName:String,
             bankName:String,
         },
@@ -61,8 +61,9 @@ googlepay_upi_id:String,
         default:0,
     },
     moneySpent:{
-        type:String,
-        default:0,
+        // type:String,
+         type:Number,////my change
+         default:0,
 
     },
     createdAt:{

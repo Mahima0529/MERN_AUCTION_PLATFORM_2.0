@@ -10,8 +10,21 @@ const auctionSchema = new mongoose.Schema({
         enum:["New", "Used"],
     },
     currentBid:{type:Number, default:0},
-    startTime:String,
-    endTime:String,
+  //  startTime:String,
+    // endTime:String,
+
+
+startTime: {
+    type: Date,
+    required: true,
+},
+endTime: {
+    type: Date,
+    required: true,
+},
+/////my changes
+
+
     image:{
         public_id:{
             type:String,
@@ -35,7 +48,7 @@ const auctionSchema = new mongoose.Schema({
             },
             userName:String,
             profileImage:String,
-            amount:Number
+            amount:Number,
         },
     ],
 
@@ -45,7 +58,7 @@ const auctionSchema = new mongoose.Schema({
     },
     commissionCalculated:{
         type:Boolean,
-        default:false
+        default:false,
     },
     createdAt:{
         type:Date,

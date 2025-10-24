@@ -9,4 +9,4 @@ const commissionSchema = new mongoose.Schema({
     },
 });
 
-export const commission= mongoose.model("Commission", commissionSchema);
+export const Commission= mongoose.model("Commission", commissionSchema);

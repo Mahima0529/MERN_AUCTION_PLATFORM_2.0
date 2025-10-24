@@ -68,7 +68,7 @@ const alreadyOneAuctionActive = await Auction.find({
 if(alreadyOneAuctionActive.length>0){
     return next(
         new ErrorHandler(
-            "You have already one actib=ve auction.",400
+            "You have already one active auction.",400
         )
     );
 }
@@ -83,7 +83,7 @@ if(!cloudinaryResponse|| cloudinaryResponse.error){
         cloudinaryResponse.error || "Unknown cloudinary error"
     );
     return next(
-        new(ErrorHandler("Failed to upload Auction image to cloudinary ", 500))
+        new ErrorHandler("Failed to upload Auction image to cloudinary ", 500)
     );
 }
  const auctionItem = await Auction.create({
@@ -126,32 +126,34 @@ res.status(200).json({
 
 });
 
-export const getMyAuctionItems = catchAsyncErrors(async(req,res,next)=>{
-const items = await Auction.find({createdBy: req.user._id});
-res.status(200).json({
-    success:true,
-    items,
-});
 
-
-});
 
 export const getAuctionDetails = catchAsyncErrors(async(req,res,next)=>{
 const {id}= req.params;
 if(!mongoose.Types.ObjectId.isValid(id)){
-    return next(new ErrorHandler("Invalid Id format,", 400));
+    return next(new ErrorHandler("Invalid Id format", 400));
 }
 const auctionItem= await Auction.findById(id);
 if(!auctionItem){
     return next (new ErrorHandler("Auction not found.",404));
 }
-const bidders = auctionItem.bids.sort((a,b)=> b.bid- a.bid);
+const bidders = auctionItem.bids.sort((a,b)=> b.amount- a.amount);
 res.status(200).json({
     success:true,
  auctionItem,
  bidders,
 })
 
+
+
+});
+
+export const getMyAuctionItems = catchAsyncErrors(async(req,res,next)=>{
+const items = await Auction.find({createdBy: req.user._id});
+res.status(200).json({
+    success:true,
+    items,
+});
 
 
 });
@@ -219,7 +221,7 @@ if(data.startTime>=data.endTime){
 if(auctionItem.highestBidder){
     const highestBidder = await User.findById(auctionItem.highestBidder);
     highestBidder.moneySpent -=auctionItem.currentBid;
-    highestBidder.auctionItem -= -1;
+    highestBidder.auctionsWon -= 1;
     highestBidder.save();
 }
 
@@ -232,7 +234,7 @@ data.bids=[];
 data.commissionCalculated= false;
 data.currentBid=0;
 
- data.highestBidder="";
+ data.highestBidder=null;
 
 auctionItem= await Auction.findByIdAndUpdate(id, data,{
     new:true,
