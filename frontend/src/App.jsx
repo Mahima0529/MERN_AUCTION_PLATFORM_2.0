@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { fetchUser } from "./store/slices/userSlice";
 import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
+import { getAllAuctionItems } from "./store/slices/auctionSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchUser());
+    dispatch(getAllAuctionItems());
   }, [dispatch]);
 
   return (

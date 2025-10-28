@@ -257,9 +257,8 @@ const SideDrawer = ({ isSidebarOpen, setIsSidebarOpen }) => {
       {/* 🟢 Hamburger Button (Visible only on small screens) */}
       <div
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="fixed right-5 top-5 bg-[#D64828] text-white text-3xl p-2 rounded-md 
-                   hover:bg-[#b8381e] z-50 cursor-pointer shadow-lg lg:hidden"
-      >
+        className="fixed right-5 top-5   bg-[#D64828] text-white text-3xl p-2 rounded-md 
+                   hover:bg-[#b8381e] z-50 cursor-pointer shadow-lg lg:hidden">
         <GiHamburgerMenu />
       </div>
 
@@ -267,12 +266,11 @@ const SideDrawer = ({ isSidebarOpen, setIsSidebarOpen }) => {
       <div
         className={`
           fixed top-0 left-0 h-full bg-[#f6f4f0] p-6 flex flex-col justify-between 
-          transition-transform duration-300 z-40
+          transition-transform duration-300 z-40 w-64 min-h-screen border-r border-gray-600
           w-72 sm:w-80 md:w-96 lg:w-[350px] xl:w-[400px]
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
           lg:translate-x-0  /* Always visible on large screens */
-        `}
-      >
+        `}>
         {/* Header */}
         <div>
           <Link to="/">
