@@ -14,6 +14,7 @@ const auctionItem= await Auction.findById(id);
 if(!auctionItem){
     return next (new ErrorHandler("Auction not found.",404));
 }
+    
 await auctionItem.deleteOne();
 res.status(200).json({
     success:true,

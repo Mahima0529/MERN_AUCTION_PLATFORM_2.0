@@ -37,7 +37,8 @@ await transporter.sendMail(options);
 //       text: message,
 //     });
 
-//     console.log("✅ Email sent successfully to:", email);
+//    
+//console.log("✅ Email sent successfully to:", email);
 //   } catch (error) {
 //     console.error("❌ Error sending email:", error.message);
 //   }

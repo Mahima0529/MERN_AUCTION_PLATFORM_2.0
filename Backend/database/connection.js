@@ -9,4 +9,4 @@ dbName:"MERN_AUCTION_PLATFORM",
         console.log(`Some problem occured while connecting to database :${err}`);
     })
     
-}
+};

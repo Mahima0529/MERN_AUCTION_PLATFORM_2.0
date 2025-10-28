@@ -8,5 +8,4 @@ const commissionSchema = new mongoose.Schema({
         default : Date.now,
     },
 });
-
 export const Commission= mongoose.model("Commission", commissionSchema);

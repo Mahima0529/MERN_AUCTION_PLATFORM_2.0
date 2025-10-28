@@ -17,5 +17,4 @@ const bidSchema = new mongoose.Schema({
         required:true,
     },
 });
-
 export const Bid= mongoose.model("Bid", bidSchema);

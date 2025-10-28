@@ -19,5 +19,6 @@ export const checkAuctionEndTime = catchAsyncErrors(async(req , res ,next)=>{
     if (new Date(auction.endTime)<now){
         return next (new ErrorHandler("Auction is ended", 400));
     }
+    
     next ();
 });

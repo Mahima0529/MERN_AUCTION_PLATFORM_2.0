@@ -12,6 +12,7 @@ export const calculateCommission = async(auctionId)=>{
         return next (new ErrorHandler("Invalid Auction Id format",400));
 
     }
+    
     const commissionRate= 0.05;
     const commission= auction.currentBid*commissionRate;
     return commission;

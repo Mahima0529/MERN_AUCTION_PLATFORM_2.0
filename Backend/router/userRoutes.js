@@ -9,4 +9,4 @@ router.get("/me",isAuthenticated, getProfile);
 router.get("/logout", isAuthenticated,logout);
 router.get("/leaderboard", fetchLeaderboard);
 
-export default router;
+export default router ;
