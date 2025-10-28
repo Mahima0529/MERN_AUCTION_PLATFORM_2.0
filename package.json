@@ -20,13 +20,15 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.1",
     "node-cron": "^4.2.1",
-    "nodemailer": "^7.0.6",
-    "nodemon": "^3.1.10"
+    "nodemailer": "^7.0.6"
   },
   "type": "module",
   "description": "mern stack auction platform",
   "repository": {
     "type": "git",
     "url": "\"\""
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
