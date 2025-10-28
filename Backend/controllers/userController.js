@@ -9,6 +9,7 @@ export const register=catchAsyncErrors(async(req,res,next)=>{
     return next(new ErrorHandler("Profile Image Required",400))
 
     }
+ 
 
 const {profileImage} = req.files;
 const allowedFormats = ["image/png",  "image/jpeg","image/jpg", "image/webp"];
