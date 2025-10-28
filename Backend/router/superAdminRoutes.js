@@ -18,4 +18,5 @@ const router = express.Router();
 
    router.get("/monthlyincome", isAuthenticated,isAuthorized("Super Admin"), monthlyRevenue);
 
+
 export default router;
