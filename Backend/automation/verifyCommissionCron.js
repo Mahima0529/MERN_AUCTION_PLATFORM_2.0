@@ -5,6 +5,7 @@ import cron from "node-cron";
 import { sendEmail } from "../utils/sendemail.js";
 
 export const verifyCommissionCron=()=>{
+    
     cron.schedule("*/1 * * * *", async()=>{
         console.log("Running verify Commission Cron...");
         const approvedProofs = await PaymentProof.find({status:"Approved"});
