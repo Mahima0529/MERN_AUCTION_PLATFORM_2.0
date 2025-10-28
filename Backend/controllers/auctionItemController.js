@@ -11,6 +11,7 @@ export const addNewAuctionItem = catchAsyncErrors(async(req,res,next)=>{
 
     }
 
+    
 const {image} = req.files;
 const allowedFormats = ["image/png",  "image/jpeg","image/jpg", "image/webp"];
 if(!allowedFormats.includes(image.mimetype)){
