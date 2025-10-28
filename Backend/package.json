@@ -23,6 +23,7 @@
     "nodemailer": "^7.0.6",
     "nodemon": "^3.1.10"
   },
+ 
   "type": "module",
   "description": "mern stack auction platform",
   "repository": {
