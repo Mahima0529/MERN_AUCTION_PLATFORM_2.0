@@ -65,5 +65,4 @@ endTime: {
         default:Date.now,
     },
 });
-
 export const Auction= mongoose.model("Auction", auctionSchema);
