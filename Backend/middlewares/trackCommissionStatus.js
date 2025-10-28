@@ -9,5 +9,5 @@ export const trackCommissionStatus = catchAsyncErrors(
             return next (new ErrorHandler("You have unpaid commission. Please pay it before posting a new auction", 403));
         }
         next();
-    };
+    }
 );
