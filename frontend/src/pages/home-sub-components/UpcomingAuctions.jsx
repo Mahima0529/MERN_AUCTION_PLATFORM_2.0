@@ -42,7 +42,7 @@ const UpcomingAuctions = () => {
   </div>
 </div>
 
-          <div className="flex flex-col  gap-6 w-full lg:flex-1 2xl:flex-none 2xl:basis-64 2xl:flex-grow">
+          <div className="flex flex-col mt-4 gap-6 w-full lg:flex-1 2xl:flex-none 2xl:basis-64 2xl:flex-grow">
             {auctionsStartingToday.slice(0, 2).map((element) => {
               return (
                 <Link
@@ -50,7 +50,7 @@ const UpcomingAuctions = () => {
                   key={element._id}
                   className="w-full flex flex-col gap-4 bg-white p-2 rounded-md 2xl:gap-2 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3">
                     <img
                       src={element.image?.url}
                       alt={element.title}
