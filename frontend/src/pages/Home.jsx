@@ -25,24 +25,33 @@ const Home = () => {
 
   return (
    <>
-    <section
+  <section
   className="
-    min-h-screen flex flex-col justify-center items-center
-    bg-gradient-to-br from-[#f6f4f0] via-[#f6f4f0] to-[#F8D4DD]
+    min-h-screen 
+    flex flex-col justify-center items-center
+    bg-gradient-to-br from-[#FFD8A8] via-[#FFDAB9] to-[#F8D4DD]
     px-6 py-10 space-y-6
-    w-full
-    lg:ml-[500px] lg:w-[calc(100%-500px)]
+    w-[100vw] ml-0
+    md:w-[100vw] 
+    lg:w-[80vw] lg:ml-[20vw]
     overflow-y-auto
-  ">
+    transition-all duration-300
+  "
+>
+
 <div className='flex flex-col items-start w-full p-0 m-0'>
   <p className=' text-[#deccbe] font-bold text-xl  mb-8'> Transparency Leads to Your Victory</p>
- <h1 className="text-7xl font-extrabold text-[#111] drop-shadow-sm tracking-wide">
-      Transparent Auctions
-      </h1>
-       <h1 className="text-7xl font-extrabold text-[#d6482b] drop-shadow-sm tracking-wide mt-4">
-      Be The Winner
-      </h1>
-      <div className='flex gap-4 my-8'>
+   <h1
+            className={`text-[#111] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-5xl 2xl:text-4xl`}
+          >
+            Transparent Auctions
+          </h1>
+       <h1
+            className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-5xl 2xl:text-4xl`}
+          >
+            Be The Winner
+          </h1>
+      {/* <div className='flex gap-4 my-8'>
         {
           !isAuthenticated &&(
             <>
@@ -63,11 +72,12 @@ const Home = () => {
             </>
           )
         }
-      </div>
+      </div> */}
 </div>
 
 <div className='flex flex-col items-start w-full p-0 m-0 gap-6'>
-  <h3 className='font-semibold text-6xl'>How it works</h3>
+   <h3 className="text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl">How it works</h3>
+       
   <div className='flex flex-col gap-4 md:flex-row 
   md:flex-wrap w-full'>
 {
@@ -77,10 +87,10 @@ const Home = () => {
       className='bg-white flex flex-col gap-2 p-2 
       rounded-md h-[96px] justify-center md:w-[48%]
       lg:w-[47%] 2xl:w-[24%] hover:shadow-md transition-all duration-300'>
-        <h5 className='font-bold text-2xl'>{element.title}
+        <h5 className='font-bold '>{element.title}
 
         </h5>
-        <p className='text-xl'>{element.description}</p>
+        <p >{element.description}</p>
       </div>
     )
   })
