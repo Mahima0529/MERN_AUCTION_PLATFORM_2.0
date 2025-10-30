@@ -44,18 +44,23 @@ const steps = [
 
   return (
    <>
-   <section
+  <section
   className="
-    min-h-screen flex flex-col justify-start items-center
-    bg-gradient-to-br from-[#FFE5C2] via-[#FFD6C2] to-[#FDE2E4]
-    px-6 py-16 space-y-5
-    lg:ml-[500px] lg:w-[calc(100%-500px)]
-    w-full   overflow-y-auto
+    min-h-screen 
+    flex flex-col justify-center items-center
+    bg-gradient-to-br from-[#FFD8A8] via-[#FFDAB9] to-[#F8D4DD]
+    px-6 py-10 space-y-6
+    w-[100vw] ml-0
+    md:w-[100vw] 
+    lg:w-[80vw] lg:ml-[20vw]
+    overflow-y-auto
+    transition-all duration-300
   "
 >
 
+
   {/* Heading */}
-  <h1 className="text-7xl font-extrabold text-[#D64838] drop-shadow-md tracking-wide text-center mt-20">
+  <h1 className="text-5xl font-extrabold text-[#D64838] drop-shadow-md tracking-wide text-center ">
     Discover How PrimeBid Operates
   </h1>
 
@@ -65,21 +70,21 @@ const steps = [
       <div
         key={index}
         className="bg-white/80 backdrop-blur-sm border border-[#ffd6c2] 
-                   rounded-2xl p-6 flex flex-col items-center text-center 
+                   rounded-2xl px-1 py-1.5 flex flex-col items-center text-center 
                    transition-all duration-300 shadow-sm hover:shadow-xl 
                    hover:-translate-y-2 hover:bg-white mt-8"
       >
         <div
-          className="bg-[#D64838] text-white text-4xl p-4 rounded-full 
+          className="bg-[#D64838] text-white text-[17px] p-4 rounded-full 
                      mb-4 shadow-md transition-all duration-300 
                      group-hover:scale-110"
         >
           {element.icon}
         </div>
-        <h2 className="text-3xl font-semibold text-[#D64838]">
+        <h2 className="text-[17px] font-semibold text-[#D64838]">
           {element.title}
         </h2>
-        <p className="text-gray-600 mt-2 text-xl leading-relaxed">
+        <p className="text-gray-600 mt-2 text-[17px] leading-relaxed">
           {element.description}
         </p>
       </div>
