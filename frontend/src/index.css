@@ -200,7 +200,7 @@ button:focus-visible {
   body {
     @apply bg-background text-foreground;
     /* background: linear-gradient(86deg, rgba(246, 244, 24000), #f6f4f0); */
-     background-color: #f6f4f0;
+     background-color: var(--background); 
 overflow-x: hidden;
 overflow-y: auto;
     font-family: "Inter", sans-serif;
