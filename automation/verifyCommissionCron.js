@@ -2,7 +2,7 @@ import { User } from "../models/userSchema.js";
 import { PaymentProof } from "../models/commissionProofSchema.js";
 import { Commission } from "../models/commissionSchema.js";
 import cron from "node-cron";
-import { sendEmail } from "../utils/sendemail.js";
+import { sendEmail } from "../utils/sendEmail.js";
 
 export const verifyCommissionCron=()=>{
     cron.schedule("*/1 * * * *", async()=>{

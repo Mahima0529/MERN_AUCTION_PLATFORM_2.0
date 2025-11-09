@@ -2,7 +2,7 @@ import { User } from "../models/userSchema.js";
 import { PaymentProof } from "../models/commissionProofSchema.js";
 import { Commission } from "../models/commissionSchema.js";
 import cron from "node-cron";
-import { sendEmail } from "../utils/sendemail.js";
+import { sendEmail } from "../utils/sendEmail.js";
 
 if (!global.__verifyCommissionCronStarted) global.__verifyCommissionCronStarted = false;
 
