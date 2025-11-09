@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const FeaturedAuctions = () => {
+  // eslint-disable-next-line no-unused-vars
   const { allAuctions, loading } = useSelector((state) => state.auction);
   return (
     <>

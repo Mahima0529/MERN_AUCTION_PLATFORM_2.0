@@ -40,9 +40,10 @@ console.log("✅ handleRegister triggered");
       formData.append("bankAccountName", bankAccountName);
       formData.append("bankAccountNumber", bankAccountNumber);
       formData.append("bankName", bankName);
-      formData.append("phonepeId", phonepeId);
-      formData.append("googlepayId", googlepayId);
+      formData.append("phonepe_upi_id", phonepeId);
+      formData.append("googlepay_upi_id", googlepayId);
     }
+    
     dispatch(register(formData));
   };
 
@@ -170,15 +171,15 @@ console.log("✅ handleRegister triggered");
             </div>
 
             {/* --- Profile Image --- */}
-            <div className="flex flex-col md:flex-row items-center gap-5">
-              <label className="text-[16px] text-gray-700  w-full md:w-1/3">
+            <div className="flex flex-col md:flex-row items-center gap-7 py-3">
+              {/* <label className="text-[16px] text-gray-700  w-full md:w-1/3">
                 Profile Image
-              </label>
-              <div className="flex items-center gap-4">
+              </label> */}
+              <div className="flex items-center gap-3">
                 <img
                   src={profileImagePreview ? profileImagePreview : "/imageHolder.jpg"}
-                  alt="Profile Preview"
-                  className="w-14 h-14 rounded-full border-2 border-[#D64838] object-cover shadow-sm"
+                  alt="Profile"
+                  className="w-14 h-14 rounded-full  border-2 border-[#D64838] object-cover shadow-sm"
                 />
                 <input
                   type="file"

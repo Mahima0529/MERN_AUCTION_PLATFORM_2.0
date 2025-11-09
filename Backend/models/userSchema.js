@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema({
             bankName:String,
         },
         googlepay:{
-googlepay_upi_id:String,
+googlepay_upi_id:{type:String},
         },
         phonepe:{
             phonepe_upi_id:String,

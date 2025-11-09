@@ -25,20 +25,20 @@ const Leaderboard = () => {
       ) : (
         <>
           {/* Heading */}
-          <h1 className="text-[#D6482B] text-3xl self-start sm:text-5xl md:text-6xl  2xl:text-4xl font-bold text-center ">
+          <h1 className="text-[#D6482B] text-3xl self-start sm:text-5xl md:text-4xl  2xl:text-4xl font-bold text-center ">
             Bidders Leaderboard
           </h1>
 
           {/* Table */}
           <div className="w-full overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-200 shadow-sm my-1 rounded-lg">
+            <table className="min-w-full bg-white border border-gray-200 shadow-sm  rounded-lg">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="py-2 px-4 text-left  text-gray-700">#</th>
-                  <th className="py-2 px-4 text-left  text-gray-700">Profile Pic</th>
-                  <th className="py-2 px-4 text-left  text-gray-700">Username</th>
-                  <th className="py-2 px-4 text-left  text-gray-700">Bid Expenditure</th>
-                  <th className="py-2 px-4 text-left  text-gray-700">Auctions Won</th>
+                  <th className="py-1 px-4 text-left  text-gray-700">#</th>
+                  <th className="py-1 px-4 text-left  text-gray-700">Profile Pic</th>
+                  <th className="py-1 px-4 text-left  text-gray-700">Username</th>
+                  <th className="py-1 px-4 text-left  text-gray-700">Bid Expenditure</th>
+                  <th className="py-1 px-4 text-left  text-gray-700">Auctions Won</th>
                 </tr>
               </thead>
 
@@ -58,19 +58,19 @@ const Leaderboard = () => {
                       key={element._id || index}
                       className="border-b border-gray-200 hover:bg-gray-50 transition"
                     >
-                       <td className="flex gap-2 items-center py-2 px-4">
-                      <span className="text-stone-400 font-semibold text-xl w-7 hidden sm:block">
+                       <td className="flex gap-2 items-center  px-3">
+                      <span className="text-stone-400 font-semibold text-xl w-7 ">
                             {index + 1}
                           </span>
-                      
-                      <td className="py-3 px-4">
+                      </td>
+                      <td className="py-2 px-4">
                         <img
                           src={element.profileImage?.url}
                           alt={element.userName}
-                          className="h-12 w-12 object-cover rounded-full border border-gray-300"
+                          className="h-8 w-8 object-cover rounded-full border border-gray-300"
                         />
                       </td>
-                      </td>
+                      {/* </td> */}
                       <td className="py-2 px-4">{element.userName}</td>
                       <td className="py-2 px-4 ">
                         {element.moneySpent}

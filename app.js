@@ -12,10 +12,10 @@ import commissionRouter from "./router/commissionRouter.js"
 import superAdminRouter from "./router/superAdminRoutes.js"
 import { endedAuctionCron } from "./automation/endedAuctionCron.js";
 import { verifyCommissionCron } from "./automation/verifyCommissionCron.js";
- 
+
 const app = express();
 config({
-    path:"./config/config.env"
+    path:"./config/"
 });
 
 app.use(cors( {
@@ -41,8 +41,8 @@ app.use("/api/v1/commission", commissionRouter);
 app.use("/api/v1/superadmin", superAdminRouter);
 
 
-endedAuctionCron();
-verifyCommissionCron();
+ endedAuctionCron();
+ verifyCommissionCron();
 connection();
 app.use(errorMiddleware);
 

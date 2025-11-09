@@ -20,7 +20,7 @@ const Home = () => {
       description: "Bidder pays; auctioneer pays 5% fee.",
     },
   ];
-
+// eslint-disable-next-line no-unused-vars
     const { isAuthenticated } = useSelector((state) => state.user);
 
   return (
@@ -40,7 +40,7 @@ const Home = () => {
 >
 
 <div className='flex flex-col items-start w-full p-0 m-0'>
-  <p className=' text-[#deccbe] font-bold text-xl  mb-8'> Transparency Leads to Your Victory</p>
+  <p className=' text-[#DA70D6] font-bold text-xl  mb-8'> Transparency Leads to Your Victory</p>
    <h1
             className={`text-[#111] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-5xl 2xl:text-4xl`}
           >

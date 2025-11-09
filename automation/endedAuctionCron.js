@@ -189,16 +189,34 @@ if (typeof bidder.moneySpent !== "number") {
   await bidder.save();
 }
             // Update bidder stats
-            await User.findByIdAndUpdate(
-              bidder._id,
-              {
-                $inc: {
-                  moneySpent: highestBidder.amount,
-                  auctionsWon: 1,
-                },
-              },
-              { new: true }
-            );
+            // await User.findByIdAndUpdate(
+            //   bidder._id,
+            //   {
+            //     $inc: {
+            //       moneySpent: highestBidder.amount,
+            //       auctionsWon: 1,
+            //     },
+            //   },
+            //   { new: true }
+            // );
+
+            const alreadyWon = await Auction.exists({
+  _id: auction._id,
+  highestBidder: bidder._id
+});
+
+if (!alreadyWon) {
+  await User.findByIdAndUpdate(
+    bidder._id,
+    {
+      $inc: {
+        moneySpent: highestBidder.amount,
+        auctionsWon: 1,
+      },
+    },
+    { new: true }
+  );
+}
 
             // Update auctioneer stats
             await User.findByIdAndUpdate(
@@ -214,17 +232,17 @@ if (typeof bidder.moneySpent !== "number") {
             // Send email to highest bidder
             const subject = `Congratulations! You won the auction for ${auction.title}`;
             const message = `Dear ${bidder.userName}, \n\nCongratulations! You have won the auction for ${auction.title}.
-//            \n\nBefore proceeding for payment contact your auctioneer via your auctioneer email:${auctioneer.email}
-//             \n\nPlease complete your payment using one of the following methods:
-//             \n\n1. **Bank Transfer**: \n- Account Name: ${auctioneer.paymentMethods.bankTransfer.bankAccountName} 
-//             \n- Account Number: ${auctioneer.paymentMethods.bankTransfer.bankAccountNumber}
-//              \n- Bank: ${auctioneer.paymentMethods.bankTransfer.bankName}\n\n2. **Googlepay**:
-//              \n- You can send payment via GooglePay: ${auctioneer.paymentMethods.googlepay.googlepay_upi_id}\n\n3. **Phonepe**:
-//              \n- Send payment to: ${auctioneer.paymentMethods.phonepe.phonepe_upi_id}\n\n4. **Cash on Delivery (COD)**:\
-//              n- If you prefer COD, you must pay 20% of the total amount upfront before delivery.\n- To pay the 20% upfront, use any of the above methods.
-//              \n- The remaining 80% will be paid upon delivery.\n- If you want to see the condition of your auction item then send your email on this: ${auctioneer.email}
-//              \n\nPlease ensure your payment is completed by [Payment Due Date]. Once we confirm the payment, the item will be shipped to you.\n\nThank you for participating!
-//              \n\nBest regards,\nMAHIMA Auction Team`;
+           \n\nBefore proceeding for payment contact your auctioneer via your auctioneer email:${auctioneer.email}
+            \n\nPlease complete your payment using one of the following methods:
+            \n\n1. **Bank Transfer**: \n- Account Name: ${auctioneer.paymentMethods.bankTransfer.bankAccountName} 
+            \n- Account Number: ${auctioneer.paymentMethods.bankTransfer.bankAccountNumber}
+             \n- Bank: ${auctioneer.paymentMethods.bankTransfer.bankName}\n\n2. **Googlepay**:
+             \n- You can send payment via GooglePay: ${auctioneer.paymentMethods.googlepay.googlepay_upi_id}\n\n3. **Phonepe**:
+             \n- Send payment to: ${auctioneer.paymentMethods.phonepe.phonepe_upi_id}\n\n4. **Cash on Delivery (COD)**:\
+             n- If you prefer COD, you must pay 20% of the total amount upfront before delivery.\n- To pay the 20% upfront, use any of the above methods.
+             \n- The remaining 80% will be paid upon delivery.\n- If you want to see the condition of your auction item then send your email on this: ${auctioneer.email}
+             \n\nPlease ensure your payment is completed by [Payment Due Date]. Once we confirm the payment, the item will be shipped to you.\n\nThank you for participating!
+             \n\nBest regards,\nMAHIMA AUCTION TEAM`;
 
             console.log(`Sending email to highest bidder: ${bidder.email}`);
             await sendEmail({ email: bidder.email, subject, message });
@@ -251,7 +269,7 @@ const startCron = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("✅ Connected to MongoDB");
 
-    endedAuctionCron();
+  //  endedAuctionCron();
     console.log("🚀 endedAuctionCron started...");
   } catch (error) {
     console.error("❌ MongoDB connection error:", error.message);

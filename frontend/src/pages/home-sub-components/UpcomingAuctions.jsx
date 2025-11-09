@@ -70,7 +70,14 @@ const UpcomingAuctions = () => {
                   </div>
                   <div className="flex flex-col">
                     <p className="text-stone-600  text-xl font-semibold">Starting Time:</p>
-                    <p className="text-black text-[16px]">{element.startTime}</p>
+                   <p className="text-black text-[16px]">
+  {new Date(element.startTime).toLocaleString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  })}
+</p>
+
                   </div>
                 </Link>
               );

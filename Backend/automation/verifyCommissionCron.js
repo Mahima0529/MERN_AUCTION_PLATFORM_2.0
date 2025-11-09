@@ -4,8 +4,14 @@ import { Commission } from "../models/commissionSchema.js";
 import cron from "node-cron";
 import { sendEmail } from "../utils/sendemail.js";
 
-export const verifyCommissionCron=()=>{
-    
+if (!global.__verifyCommissionCronStarted) global.__verifyCommissionCronStarted = false;
+
+export const verifyCommissionCron = () => {
+  if (global.__verifyCommissionCronStarted) {
+    console.log("⏭️ verifyCommissionCron already started, skipping duplicate scheduler.");
+    return;
+  }
+  global.__verifyCommissionCronStarted = true;    
     cron.schedule("*/1 * * * *", async()=>{
         console.log("Running verify Commission Cron...");
         const approvedProofs = await PaymentProof.find({status:"Approved"});

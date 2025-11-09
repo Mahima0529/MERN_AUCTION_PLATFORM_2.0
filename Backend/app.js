@@ -43,9 +43,12 @@ app.use("/api/v1/commission", commissionRouter);
 app.use("/api/v1/superadmin", superAdminRouter);
 
 
-endedAuctionCron();
-verifyCommissionCron();
-connection();
+connection().then(() => {
+  endedAuctionCron();
+  verifyCommissionCron();
+}).catch((e) => {
+  console.error("DB connection failed, cron not started:", e?.message || e);
+});
 app.use(errorMiddleware);
 
 

@@ -104,7 +104,7 @@ const About = () => {
             Our Story
           </h3>
           <p className="text-[17px] text-stone-600">
-            Founded by CodeWithZeeshu, PrimeBid was born out of a passion for
+            Founded by Mahima, PrimeBid was born out of a passion for
             connecting people with unique and valuable items. With years of
             experience in the auction industry, our team is committed to
             creating a platform that offers an unparalleled auction experience
