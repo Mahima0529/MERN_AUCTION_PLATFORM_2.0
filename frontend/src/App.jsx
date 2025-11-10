@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import SideDrawer from "./layout/SideDrawer";
 import Home from "./pages/Home";
-import SignUp from "./pages/Signup";
+//import SignUp from "./pages/Signup";
 import Login from "./pages/Login";
 import SubmitCommission from "./pages/SubmitCommission";
 import HowItWorks from "./pages/HowItWorks";
@@ -23,6 +23,7 @@ import ViewAuctionDetails from "./pages/ViewAuctionDetails";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Contact from "./pages/Contact";
 import UserProfile from "./pages/UserProfile";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const App = () => {
         >
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/sign-up" element={< SignUp/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/submit-commission" element={<SubmitCommission />} />
             <Route path="/how-it-works-info" element={<HowItWorks />} />

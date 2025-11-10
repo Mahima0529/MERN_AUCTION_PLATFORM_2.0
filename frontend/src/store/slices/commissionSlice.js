@@ -23,7 +23,7 @@
 // export const postCommissionProof=(data)=>async(dispatch)=>{
 //      dispatch(commissionSlice.actions.postCommissionProofRequest());
 //     try{
-//         const response= await axios.post("http://localhost:5000/api/v1/commission/proof",
+//         const response= await axios.post("https://mern-auction-backend-xk9l.onrender.com/api/v1/commission/proof",
 //             data,
 //             {
 //                 withCredentials:true,
@@ -79,7 +79,7 @@ export const postCommissionProof = (data) => async (dispatch) => {
   dispatch(commissionSlice.actions.postCommissionProofRequest());
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/v1/commission/proof",
+      "https://mern-auction-backend-xk9l.onrender.com/api/v1/commission/proof",
       data,
       {
         withCredentials: true,
