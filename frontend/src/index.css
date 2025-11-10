@@ -201,14 +201,19 @@ button:focus-visible {
     @apply bg-background text-foreground;
     /* background: linear-gradient(86deg, rgba(246, 244, 24000), #f6f4f0); */
      background-color: var(--background); 
+      color: var(--app-text-color);
 overflow-x: hidden;
 overflow-y: auto;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
   }
   #root{
+    --app-text-color: #000;
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
   }
+  .dark {
+  --app-text-color: #000; /* text stays black even in dark mode */
+}
 }
