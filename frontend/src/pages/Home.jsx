@@ -84,7 +84,7 @@ const Home = () => {
   howItWorks.map(element=>{
     return(
       <div key={element.title} 
-      className='bg-white flex flex-col gap-2 p-2 
+      className='bg-white dark:bg-white text-black dark:text-black  flex flex-col gap-2 p-2 
       rounded-md h-[96px] justify-center md:w-[48%]
       lg:w-[47%] 2xl:w-[24%] hover:shadow-md transition-all duration-300'>
         <h5 className='font-bold '>{element.title}
