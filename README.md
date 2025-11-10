@@ -59,7 +59,7 @@ The Super Admin manages verification and monitors entire system activity.
 ---
 
 ## 🌐 Live Demo
-🔗 **https://mern-auction-platform-new.netlify.app/**
+🔗 **https://mern-auction-platform-2-0-cf4x.vercel.app/**
 
 ---
 
@@ -77,7 +77,7 @@ The Super Admin manages verification and monitors entire system activity.
 git clone https://github.com/your-username/prime-bid-auction-platform.git
 
 # Navigate into the project directory
-cd prime-bid-auction-platform
+cd mern-auction-platform
 
 # Install backend dependencies
 cd server
