@@ -74,7 +74,7 @@ The Super Admin manages verification and monitors entire system activity.
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/prime-bid-auction-platform.git
+git clone https://github.com/your-username/mern-auction-platform.git
 
 # Navigate into the project directory
 cd mern-auction-platform
