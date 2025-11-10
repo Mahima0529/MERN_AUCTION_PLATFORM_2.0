@@ -171,10 +171,8 @@ console.log("✅ handleRegister triggered");
             </div>
 
             {/* --- Profile Image --- */}
-            <div className="flex flex-col md:flex-row items-center gap-7 py-3">
-              {/* <label className="text-[16px] text-gray-700  w-full md:w-1/3">
-                Profile Image
-              </label> */}
+            {/* <div className="flex flex-col md:flex-row items-center gap-7 py-3">
+             
               <div className="flex items-center gap-3">
                 <img
                   src={profileImagePreview ? profileImagePreview : "/imageHolder.jpg"}
@@ -188,7 +186,26 @@ console.log("✅ handleRegister triggered");
                   className="text-sm text-gray-700"
                 />
               </div>
-            </div>
+            </div> */}
+            <div className="mt-8 flex flex-col gap-4">
+
+        <label className="text-gray-700 font-medium">Profile Image</label>
+
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+          <img
+            src={profileImagePreview ? profileImagePreview : "/imageHolder.jpg"}
+            alt="Profile"
+            className="w-14 h-14 rounded-full border-2 border-[#D64838] object-cover shadow-sm mx-auto sm:mx-0"
+          />
+
+          <input
+            type="file"
+            accept="image/*"
+            onChange={imageHandler}
+            className="text-sm text-gray-700 w-full sm:w-auto"
+          />
+        </div>
+      </div>
 
             {/* --- Payment Section --- */}
             <div className="mt-8">
