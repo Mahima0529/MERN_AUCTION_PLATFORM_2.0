@@ -21,7 +21,8 @@ console.log("Loaded MONGO_URI =", process.env.MONGO_URI);
 
 
 app.use(cors( {
-    origin: [process.env.FRONTEND_URL],
+    // origin: [process.env.FRONTEND_URL],
+ origin: "https://mern-auction-platform-2-0-u4k1.vercel.app",
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials:true,
 })
