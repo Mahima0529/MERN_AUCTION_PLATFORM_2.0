@@ -56,6 +56,16 @@ def rate_limit_check(request: Request):
             detail=f"Rate limit exceeded. Maximum {settings.RATE_LIMIT_REQUESTS_PER_MIN} requests per minute."
         )
 
+@app.get("/")
+def root():
+    """Root endpoint welcoming visitors and linking to documentation."""
+    return {
+        "status": "online",
+        "service": "PrimeBid AI Microservice",
+        "docs": "/docs",
+        "health": "/health"
+    }
+
 @app.get("/health")
 def health_check():
     """Health check endpoint exposing service and cache status."""
