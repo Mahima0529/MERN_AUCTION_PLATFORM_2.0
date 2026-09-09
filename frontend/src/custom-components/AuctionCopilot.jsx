@@ -19,7 +19,11 @@ import axios from "axios";
 import { BASE_URL } from "../config";
 
 // Default URL points to FastAPI service with fallback to Express proxy
-const API_URL = import.meta.env.VITE_AI_SERVICE_URL || "http://localhost:8000";
+const API_URL =
+  import.meta.env.VITE_AI_SERVICE_URL ||
+  (typeof window !== "undefined" && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1"
+    ? "https://ai-powered-mern-auction-platform-2-0.onrender.com"
+    : "http://localhost:8000");
 
 const QUICK_PROMPTS = [
   "Find vintage cameras under $200",
