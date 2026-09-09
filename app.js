@@ -22,7 +22,18 @@ config({
 config();
 
 app.use(cors({
-    origin: [process.env.FRONTEND_URL, "http://localhost:5173", "http://127.0.0.1:5173"].filter(Boolean),
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (
+            origin === process.env.FRONTEND_URL ||
+            origin.endsWith(".vercel.app") ||
+            origin.includes("localhost") ||
+            origin.includes("127.0.0.1")
+        ) {
+            return callback(null, true);
+        }
+        return callback(new Error("Blocked by CORS"));
+    },
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
 }));
