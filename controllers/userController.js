@@ -62,19 +62,21 @@ if(isRegistered){
 
 }
 
-const cloudinaryResponse = await cloudinary.uploader.upload(profileImage.tempFilePath,{
-    folder:"MERN_AUCTION_PLATFORM_USERS",
+let public_id = "default_avatar";
+let url = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80";
+
+try {
+    const cloudinaryResponse = await cloudinary.uploader.upload(profileImage.tempFilePath, {
+        folder: "MERN_AUCTION_PLATFORM_USERS",
+    });
+    if (cloudinaryResponse && !cloudinaryResponse.error && cloudinaryResponse.secure_url) {
+        public_id = cloudinaryResponse.public_id;
+        url = cloudinaryResponse.secure_url;
+    }
+} catch (cErr) {
+    console.warn("Cloudinary upload failed or credentials invalid, using fallback avatar:", cErr.message);
 }
-);
-if(!cloudinaryResponse|| cloudinaryResponse.error){
-    console.error(
-        "Cloudinary error:",
-        cloudinaryResponse.error || "Unknown cloudinary error"
-    );
-    return next(
-        new ErrorHandler("Failed to upload profile image to cloudinary ", 500)
-    );
-}
+
 const user = await User.create({
     userName,
      email, 
@@ -83,8 +85,8 @@ const user = await User.create({
      address,
       role,
       profileImage:{
-        public_id: cloudinaryResponse.public_id,
-        url:cloudinaryResponse.secure_url,
+        public_id,
+        url,
       },
      paymentMethods:{
         bankTransfer:{

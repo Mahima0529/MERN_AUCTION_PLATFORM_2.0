@@ -45,6 +45,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../config";
 
 const commissionSlice = createSlice({
   name: "commission",
@@ -79,7 +80,7 @@ export const postCommissionProof = (data) => async (dispatch) => {
   dispatch(commissionSlice.actions.postCommissionProofRequest());
   try {
     const response = await axios.post(
-      "https://mern-auction-backend-xk9l.onrender.com/api/v1/commission/proof",
+      `${BASE_URL}/api/v1/commission/proof`,
       data,
       {
         withCredentials: true,

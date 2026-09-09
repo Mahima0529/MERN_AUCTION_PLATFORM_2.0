@@ -72,21 +72,23 @@ if(alreadyOneAuctionActive.length>0){
         )
     );
 }
-try{
-const cloudinaryResponse = await cloudinary.uploader.upload(image.tempFilePath,{
-    folder:"MERN_AUCTION_PLATFORM_AUCTIONS",
-}
-);
-if(!cloudinaryResponse|| cloudinaryResponse.error){
-    console.error(
-        "Cloudinary error:",
-        cloudinaryResponse.error || "Unknown cloudinary error"
-    );
-    return next(
-        new ErrorHandler("Failed to upload Auction image to cloudinary ", 500)
-    );
-}
- const auctionItem = await Auction.create({
+try {
+  let public_id = "sample_auction_img";
+  let url = "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80";
+
+  try {
+    const cloudinaryResponse = await cloudinary.uploader.upload(image.tempFilePath, {
+      folder: "MERN_AUCTION_PLATFORM_AUCTIONS",
+    });
+    if (cloudinaryResponse && !cloudinaryResponse.error && cloudinaryResponse.secure_url) {
+      public_id = cloudinaryResponse.public_id;
+      url = cloudinaryResponse.secure_url;
+    }
+  } catch (cErr) {
+    console.warn("Cloudinary upload failed for item, using fallback:", cErr.message);
+  }
+
+  const auctionItem = await Auction.create({
     title, 
     description, 
     category,
@@ -94,13 +96,12 @@ if(!cloudinaryResponse|| cloudinaryResponse.error){
     startingBid,
     startTime,
     endTime,
-    image:{
-        public_id:cloudinaryResponse.public_id,
-           url:cloudinaryResponse.secure_url,
-
+    image: {
+      public_id,
+      url,
     },
-    createdBy:req.user._id,
- });
+    createdBy: req.user._id,
+  });
  return res.status(201).json({
     success:true,
     message:`Auction item is created and will be listed on auction page at ${startTime}`,

@@ -24,6 +24,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Contact from "./pages/Contact";
 import UserProfile from "./pages/UserProfile";
 import SignUp from "./pages/SignUp";
+import AuctionCopilot from "./custom-components/AuctionCopilot";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -69,6 +70,9 @@ const App = () => {
           </Routes>
         </main>
       </div>
+
+      {/* 🤖 Autonomous Auction Copilot */}
+      <AuctionCopilot />
 
       {/* 🟣 Toast Notifications */}
       <ToastContainer

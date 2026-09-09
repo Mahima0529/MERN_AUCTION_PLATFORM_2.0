@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 import {toast} from "react-toastify";
+import { BASE_URL } from "../../config";
 
 
 const userSlice = createSlice({
@@ -104,18 +105,18 @@ fetchUserFailed(state,action){
 export const register=(data)=>async(dispatch)=>{
     dispatch(userSlice.actions.registerRequest());
 try{
-    const response= await axios.post("https://mern-auction-backend-xk9l.onrender.com/api/v1/user/register",data,
+    const response= await axios.post(`${BASE_URL}/api/v1/user/register`,data,
         {
             withCredentials:true,
             headers:{"Content-Type": "multipart/form-data"},
         }
     );
     dispatch(userSlice.actions.registerSuccess(response.data));
-    toast.success(response.data.success);
+    toast.success(response.data.success || "User registered successfully");
     dispatch(userSlice.actions.clearAllErrors());
 }catch(error){
     dispatch(userSlice.actions.registerFailed());
-    toast.error(error.response.data.message);
+    toast.error(error.response?.data?.message || "Registration failed");
     dispatch(userSlice.actions.clearAllErrors());
 }
 };
@@ -123,7 +124,7 @@ try{
 export const login=(data)=>async(dispatch)=>{
     dispatch(userSlice.actions.loginRequest());
 try{
-    const response= await axios.post("https://mern-auction-backend-xk9l.onrender.com/api/v1/user/login",
+    const response= await axios.post(`${BASE_URL}/api/v1/user/login`,
         data,
         {
             withCredentials:true,
@@ -131,11 +132,11 @@ try{
         }
     );
     dispatch(userSlice.actions.loginSuccess(response.data));
-    toast.success(response.data.success);
+    toast.success(response.data.message || "Login successful");
     dispatch(userSlice.actions.clearAllErrors());
 }catch(error){
     dispatch(userSlice.actions.loginFailed());
-    toast.error(error.response.data.message);
+    toast.error(error.response?.data?.message || "Login failed");
     dispatch(userSlice.actions.clearAllErrors());
 }
 };
@@ -145,7 +146,7 @@ try{
 
 export const logout = ()=>async(dispatch)=>{
     try{
-const response = await axios.get("https://mern-auction-backend-xk9l.onrender.com/api/v1/user/logout",
+const response = await axios.get(`${BASE_URL}/api/v1/user/logout`,
     {withCredentials:true});
 dispatch(userSlice.actions.logoutSuccess());
 toast.success(response.data.message);
@@ -153,7 +154,7 @@ dispatch(userSlice.actions.clearAllErrors())
 ;
     }catch(error){
         dispatch(userSlice.actions.logoutFailed());
-toast.success(error.data.message);
+toast.success(error.response?.data?.message || "Logged out");
 dispatch(userSlice.actions.clearAllErrors())
 ;
     }
@@ -162,7 +163,7 @@ dispatch(userSlice.actions.clearAllErrors())
 export const fetchUser = ()=>async(dispatch)=>{
    dispatch(userSlice.actions.fetchUserRequest());
     try{
-const response = await axios.get("https://mern-auction-backend-xk9l.onrender.com/api/v1/user/me",
+const response = await axios.get(`${BASE_URL}/api/v1/user/me`,
     {withCredentials:true});
 dispatch(userSlice.actions.fetchUserSuccess(response.data.user));
 dispatch(userSlice.actions.clearAllErrors());
@@ -176,7 +177,7 @@ console.error(error);
 export const fetchLeaderboard = ()=>async(dispatch)=>{
    dispatch(userSlice.actions.fetchLeaderboardRequest());
     try{
-const response = await axios.get("https://mern-auction-backend-xk9l.onrender.com/api/v1/user/leaderboard",
+const response = await axios.get(`${BASE_URL}/api/v1/user/leaderboard`,
     {withCredentials:true});
 dispatch(userSlice.actions.fetchLeaderboardSuccess(response.data.leaderboard));
 dispatch(userSlice.actions.clearAllErrors());
