@@ -10,8 +10,7 @@ const auctionSchema = new mongoose.Schema({
         enum:["New", "Used"],
     },
     currentBid:{type:Number, default:0},
-  //  startTime:String,
-    // endTime:String,
+ 
 
 
 startTime: {
@@ -22,7 +21,7 @@ endTime: {
     type: Date,
     required: true,
 },
-/////my changes
+
 
 
     image:{
