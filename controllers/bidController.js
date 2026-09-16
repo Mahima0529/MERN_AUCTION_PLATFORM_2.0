@@ -47,7 +47,7 @@ export const placeBid = catchAsyncErrors(async (req, res, next) => {
             await existingBid.save();
         } else {
             // Create a new bid
-            const bidderDetail = await User.findById(req.user._id);
+           const bidderDetail = req.user;
 
             const bid = await Bid.create({
                 amount,
