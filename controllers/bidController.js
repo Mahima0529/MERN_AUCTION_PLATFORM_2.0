@@ -70,12 +70,7 @@ export const placeBid = catchAsyncErrors(async (req, res, next) => {
         // Always update currentBid
         auctionItem.currentBid = amount;
 
-        // 🚫 Important: Do NOT touch commissionCalculated here
-        // auctionItem.commissionCalculated stays as it is (false until auction ends)
-
-        console.log("Before saving auction:", auctionItem.commissionCalculated);
         await auctionItem.save();
-        console.log("After saving auction:", auctionItem.commissionCalculated);
 
         res.status(201).json({
             success: true,
