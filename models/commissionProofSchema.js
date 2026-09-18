@@ -23,7 +23,7 @@ const paymentProofSchema = new mongoose.Schema({
     status:{
         type:String,
         default:"Pending",
-        enum:["Pending", "Approved", "Rejected", "Settled"],
+        enum:["Pending", "Approved", "Rejected"],
     },
     amount:Number,
     comment : String,
