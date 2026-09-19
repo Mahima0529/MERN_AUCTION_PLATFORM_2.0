@@ -20,9 +20,8 @@ dotenv.config({ path: path.join(__dirname, "../config/config.env") });
 // Debug env
 console.log("MONGO_URI:", process.env.MONGO_URI);
 
-// ------------------------
 // Cron function
-// ------------------------
+
 export const endedAuctionCron = () => {
   cron.schedule("*/1 * * * *", async () => {
     console.log("⏰ Cron tick — checking ended auctions...");
@@ -61,17 +60,7 @@ if (typeof bidder.moneySpent !== "number") {
   bidder.moneySpent = parseFloat(bidder.moneySpent) || 0;
   await bidder.save();
 }
-            // Update bidder stats
-            // await User.findByIdAndUpdate(
-            //   bidder._id,
-            //   {
-            //     $inc: {
-            //       moneySpent: highestBidder.amount,
-            //       auctionsWon: 1,
-            //     },
-            //   },
-            //   { new: true }
-            // );
+           
 
             const alreadyWon = await Auction.exists({
   _id: auction._id,
@@ -133,9 +122,8 @@ if (!alreadyWon) {
   });
 };
 
-// ------------------------
+
 // MongoDB connection and start cron
-// ------------------------
 const startCron = async () => {
   try {
     console.log("Connecting to MongoDB...");
