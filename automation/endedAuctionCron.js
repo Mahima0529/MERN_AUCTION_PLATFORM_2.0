@@ -42,7 +42,6 @@ export const endedAuctionCron = () => {
                   unpiadComission: commissionAmount,
                 },
               },
-              { new: true }
             );
 
             // Send email to highest bidder
