@@ -34,24 +34,6 @@ export const endedAuctionCron = () => {
             await auction.save();
 
             const bidder = await User.findById(highestBidder.bidder.id);
-            const alreadyWon = await Auction.exists({
-  _id: auction._id,
-  highestBidder: bidder._id
-});
-
-if (!alreadyWon) {
-  await User.findByIdAndUpdate(
-    bidder._id,
-    {
-      $inc: {
-        moneySpent: highestBidder.amount,
-        auctionsWon: 1,
-      },
-    },
-    { new: true }
-  );
-}
-
             // Update auctioneer stats
             await User.findByIdAndUpdate(
               auctioneer._id,
