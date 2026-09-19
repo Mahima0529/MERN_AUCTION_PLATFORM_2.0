@@ -113,19 +113,3 @@ if (!alreadyWon) {
 };
 
 
-// MongoDB connection and start cron
-const startCron = async () => {
-  try {
-    console.log("Connecting to MongoDB...");
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("✅ Connected to MongoDB");
-
-  //  endedAuctionCron();
-    console.log("🚀 endedAuctionCron started...");
-  } catch (error) {
-    console.error("❌ MongoDB connection error:", error.message);
-  }
-};
-
-// Call startCron directly
-startCron();
