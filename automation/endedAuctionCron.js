@@ -34,12 +34,6 @@ export const endedAuctionCron = () => {
             await auction.save();
 
             const bidder = await User.findById(highestBidder.bidder.id);
-if (typeof bidder.moneySpent !== "number") {
-  bidder.moneySpent = parseFloat(bidder.moneySpent) || 0;
-  await bidder.save();
-}
-           
-
             const alreadyWon = await Auction.exists({
   _id: auction._id,
   highestBidder: bidder._id
