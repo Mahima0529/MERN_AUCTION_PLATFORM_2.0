@@ -29,12 +29,6 @@ export const endedAuctionCron = () => {
             amount: auction.currentBid,
           });
 
-          const auctioneer = await User.findById(auction.createdBy);
-          if (typeof auctioneer.unpiadComission !== "number") {
-    auctioneer.unpiadComission = parseFloat(auctioneer.unpiadComission) || 0;
-    await auctioneer.save();
-}
-
           if (highestBidder) {
             auction.highestBidder = highestBidder.bidder.id;
             await auction.save();
