@@ -1,6 +1,4 @@
-import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath } from "url";
+
 import mongoose from "mongoose";
 import cron from "node-cron";
 
@@ -10,15 +8,7 @@ import { Bid } from "../models/bidSchema.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import { calculateCommission } from "../controllers/commissionController.js";
 
-// Fix __dirname in ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
-// Load custom env file
-dotenv.config({ path: path.join(__dirname, "../config/config.env") });
-
-// Debug env
-console.log("MONGO_URI:", process.env.MONGO_URI);
 
 // Cron function
 
